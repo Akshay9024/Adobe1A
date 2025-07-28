@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  pdf-extractor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - BUILDPLATFORM=linux/amd64
+    image: pdf-heading-extractor:latest
+    container_name: pdf-heading-extractor
+    volumes:
+      - ./input:/app/input:ro
+      - ./output:/app/output
+      - ./logs:/app/logs
+    environment:
+      - LOG_LEVEL=INFO
+      - PYTHONUNBUFFERED=1
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: "8"
+          memory: 16G
+        reservations:
+          cpus: "4"
+          memory: 8G
+    # Security options
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+    # Network isolation
+    network_mode: none
+
+  # Development service with shell access
+  pdf-extractor-dev:
+    extends: pdf-extractor
+    entrypoint: /bin/bash
+    stdin_open: true
+    tty: true
+    network_mode: bridge
