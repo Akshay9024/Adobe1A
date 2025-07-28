@@ -164,8 +164,8 @@ docker run --rm \
 
 ```bash
 # Clone repository
-git clone <repository-url>
-cd pdf-heading-extractor
+git clone https://github.com/Akshay9024/Adobe1A.git
+cd Adobe1A
 
 # Create virtual environment
 python -m venv venv
@@ -197,7 +197,7 @@ python -m src.main_pipeline
 ## 📁 Project Structure
 
 ```
-pdf-heading-extractor/
+Adobe1A/
 ├── 📁 src/                          # Core pipeline modules
 │   ├── main_pipeline.py             # Main orchestration logic
 │   ├── pdf_parser.py               # PDF text extraction
@@ -381,13 +381,7 @@ pipeline = HeadingExtractionPipeline(
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **PyMuPDF Team**: Excellent PDF processing library
 - **scikit-learn Community**: Robust machine learning framework
